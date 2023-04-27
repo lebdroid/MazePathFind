@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nodes fun</title>
+    <style>
+        * {
+            -webkit-user-select: none;
+            /* Safari */
+            -ms-user-select: none;
+            /* IE 10 and IE 11 */
+            user-select: none;
+            /* Standard syntax */
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            touch-action: none;
+        }
+
+        html {
+            box-sizing: border-box;
+            overflow: hidden;
+            padding: 0px;
+            margin: 0px;
+            background-color: black;
+        }
+
+        canvas:hover {
+            cursor: pointer;
+        }
+
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            white-space: nowrap;
+            color: green;
+            margin-bottom: 20px;
+        }
+
+        .control {
+            display: flex;
+        }
+
+        #sizerange {
+            width: 25vw;
+        }
+
+        #speedrange {
+            width: 25vw;
+        }
+
+        .btn {
+            background-color: #181a1b;
+            width: 15vw;
+            border-radius: 10px;
+            border-color: #736b5e;
+            color: green
+        }
+
+        .btn:hover {
+            color: rgb(52, 215, 52)
+        }
+
+        .canvases {
+            margin-left: 8vw;
+        }
+
+        .labels {
+            display: flex;
+            flex-direction: column;
+            padding: 1vw;
+            padding-bottom: 0px;
+            padding-top: 0px;
+        }
+
+        #performanceSpan {
+            margin-bottom: 1%;
+        }
+
+        @media only screen and (max-width: 749px) {
+            .btn {
+                width: 20vw;
+
+            }
+        }
+
+        @media only screen and (max-width: 540px) {
+            .btn {
+                font-size: 2.5vw;
+                width: 24vw;
+
+            }
+
+            .header {
+                font-size: 2vw;
+            }
+        }
+
+        .settings {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            position: absolute;
+            z-index: 10;
+            background-color: black;
+            padding-bottom: 10px;
+            border: 2px solid rgb(3, 73, 10);
+            border-radius: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="settings" id="settings">
+            <div class="control">
+                <div class="options">
+                    <input type="radio" id="bfs" name="search" value="bfs">
+                    <label for="bfs">Breadth 1st search</label><br>
+                    <input type="radio" id="dfs" name="search" value="dfs" checked>
+                    <label for="dfs">Depth 1st search</label><br>
+                    <div class="coordinates">
+                        <input type="checkbox" id="ShowCordinates" name="ShowCordinates" value="bfs">
+                        <label for="ShowCordinates">Show Coordinates</label>
+                    </div>
+                    <div class="markblocks">
+                        <input type="checkbox" id="markblocks" name="markblocks" value="bfs">
+                        <label for="markblocks">Mark Blocks</label>
+                    </div>
+                </div>
+
+                <div class="labels">
+                    <label id="sizerangelabel" for="sizerange">Cell size: 25 x 25</label>
+                    <input id="sizerange" name="sizerange" type="range" value="25" min="10" max="80">
+                </div>
+                <div class="labels">
+                    <label id="speedrangelabel" for="speedrange">Drawing Delay : 0ms</label>
+                    <input id="speedrange" name="speedrange" type="range" value="0" min="0" max="200">
+                </div>
+            </div>
+            <button class="btn" id="closesettingbtn">close</button>
+        </div>
+        <button class="btn" id="opensettingbtn">Settings</button>
+        <span id="performanceSpan"></span>
+        <button class="btn" id="mazebtn">make a maze</button>
+
+    </div>
+    <div class="canvases">
+        <canvas id="Mycanvas"></canvas>
+    </div>
+    <script src="./fun.js"></script>
+</body>
+
+</html>
